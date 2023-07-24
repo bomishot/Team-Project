@@ -36,9 +36,9 @@ def rnn_regression(df):
     ])
 
     # 모델 컴파일
-    model.compile(optimizer=tf.keras.optimizers.RMSprop(learning_rate=0.001), loss='mean_squared_error')
+    model.compile(optimizer=tf.keras.optimizers.RMSprop(learning_rate=0.01), loss='mean_squared_error')
        # 모델 학습
-    model.fit(X_train_rnn, y_train, epochs=10, batch_size=16, verbose=1, validation_split=0.2)
+    model.fit(X_train_rnn, y_train, epochs=20, batch_size=16, verbose=1, validation_split=0.2)
 
     # 테스트 데이터로 예측
     y_pred_train_rnn = model.predict(X_train_rnn).flatten()
