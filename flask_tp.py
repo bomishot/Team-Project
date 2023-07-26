@@ -4,9 +4,9 @@ import numpy as np
 import tensorflow as tf
 
 app = Flask(__name__)
-loaded_model_regression = tf.keras.models.load_model(r'C:\Users\ChoiJaeYong\Desktop\codestates\team_project_flask\model.h5')
-loaded_model_bynary = tf.keras.models.load_model(r'C:\Users\ChoiJaeYong\Desktop\codestates\team_project_flask\model.h5')
-loaded_model_multi = tf.keras.models.load_model(r'C:\Users\ChoiJaeYong\Desktop\codestates\team_project_flask\model.h5')
+loaded_model_regression = tf.keras.models.load_model(r'./model.h5')
+loaded_model_bynary = tf.keras.models.load_model(r'./model.h5')
+loaded_model_multi = tf.keras.models.load_model(r'./model.h5')
 
 @app.route('/')
 def home():
