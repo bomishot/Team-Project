@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>AI 18기 아자아자팀</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='assets/favicon.ico') }}" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <!-- Responsive navbar with fixed-top class for sticky navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="/">AI 18기 아자아자팀 프로젝트</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="/">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Header - set the background image for the header in the line below-->
+    <header class="py-5 bg-image-full" style="background-image: url('https://source.unsplash.com/wfh8dDlNFOk/1600x900')">
+        <div class="text-center my-5">
+            <img class="img-fluid rounded-circle mb-4" src="https://dummyimage.com/150x150/6c757d/dee2e6.jpg" alt="..." />
+            <h1 class="text-white fs-3 fw-bolder">Full Width Pics</h1>
+            <p class="text-white-50 mb-0">Landing Page Template</p>
+        </div>
+    </header>
+
+    <!-- Content section-->
+    <section class="py-5">
+        <div class="container my-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-6">
+                    <h2>AI 소프트웨어 업그레이드 프로젝트</h2>
+                    <p class="lead">아자아자팀 프로젝트로 간단한 설명 ...</p>
+                    <p class="mb-0">---- 비고 ----</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Image element - set the background image for the header in the line below-->
+    <div class="py-5 bg-image-full" style="background-image: url('/static/Abalone_Dataset.jpg')">
+      <!-- Put anything you want here! The spacer below with inline CSS is just for demo purposes!-->
+      <div style="height: 20rem"></div>
+    </div>
+    <!-- regression -->
+    <section class="py-5">
+        <div class="container my-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-6">
+                    <h2>Regression data</h2>
+                    <p class="lead">전복의 나이는 콘을 통해 껍질을 자르고 염색하고 현미경으로 고리의 수를 세는 지루하고 시간이 많이 걸리는 작업으로 결정됩니다. 더 쉽게 얻을 수 있는 다른 측정값을 사용하여 연령을 예측합니다. 문제를 해결하려면 날씨 패턴 및 위치(따라서 식량 가용성)와 같은 추가 정보가 필요할 수 있습니다.</p>
+                    <p class="mb-0">비고</p>
+                    <form action="/regression" method="post">
+                        <button type="submit" class="btn btn-primary mt-3">Go to Regression</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Image element - set the background image for the header in the line below-->
+    <div class="py-5 bg-image-full" style="background-image: url('/static/Pulsar_Classification_For_Class_Prediction.jpg')">
+      <!-- Put anything you want here! The spacer below with inline CSS is just for demo purposes!-->
+      <div style="height: 20rem"></div>
+    </div>
+    <!-- regression -->
+    <section class="py-5">
+        <div class="container my-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-6">
+                    <h2>Binary classification data</h2>
+                    <p class="lead">라디오 천체학에서 중요한 개체인 펄서(pulsar)와 비펄서(non-pulsar)를 구분하는 데 사용됩니다. 펄서는 극히 조밀하고 빠르게 회전하는 중성자별(neutron star)로, 규칙적인 간격으로 라디오 신호를 방출하는 천체입니다.</p>
+                    <p class="mb-0">비고</p>
+                    <form action="/bynary" method="post">
+                        <button type="submit" class="btn btn-primary mt-3">Go to Bynary</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Image element - set the background image for the header in the line below-->
+    <div class="py-5 bg-image-full" style="background-image: url('/static/Faulty_Steel_Plates.jpg')">
+        <!-- Put anything you want here! The spacer below with inline CSS is just for demo purposes!-->
+        <div style="height: 20rem"></div>
+    </div>
+    <!-- Multi Classification -->
+    <section class="py-5">
+        <div class="container my-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-6">
+                    <h2>Multi Classification data</h2>
+                    <p class="lead">스테인리스 강판의 표면 결함 유형을 6가지 유형의 가능한 결함(및 "기타")으로 정확하게 분류하는 것이었습니다.</p>
+                    <p class="mb-0">비고</p>
+                    <form action="/multi" method="post">
+                        <button type="submit" class="btn btn-primary mt-3">Go to Multi</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Footer-->
+    <footer class="py-5 bg-dark">
+        <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2023</p></div>
+    </footer>
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="js/scripts.js"></script>
+</body>
+</html>
