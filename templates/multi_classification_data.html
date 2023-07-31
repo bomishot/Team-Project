@@ -1,11 +1,351 @@
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 <head>
-  <title>AnnModel1 페이지</title>
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>AI 18기 아자아자팀</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='assets/favicon.ico') }}" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
+
+
 <body>
-  <h1>AnnModel1 페이지</h1>
-  <!-- AnnModel1에 대한 내용을 여기에 추가 -->
+    <!-- Responsive navbar with fixed-top class for sticky navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="/">AI 18기 아자아자팀 프로젝트</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="/">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/about">About</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- Content section-->
+    <section class="py-5">
+        <div class="container my-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                <h2>Multi Classification Data Prediction</h2>
+                <p class="lead">다중 분류 데이터 예측</p>
+                <p>강철판의 결함의 기하학적 모양과 윤곽 등을 통해 결함 유형을 예측합니다.</p>
+
+                <form action="/predict_multi" method="post">
+
+                                        <div class="row mb-3 align-items-center">
+                        <div class="col-md-3">
+                            <label for="column1" class="form-label">X_Minimum:</label>
+                        </div>
+                        <div class="col-md-9">
+                            <input type="text" id="input_data1" name="input_data1" placeholder=" Dtype: integer " class="form-control" value="42">
+                        </div>
+                    </div>
+
+                    <div class="row mb-3 align-items-center">
+                        <div class="col-md-3">
+                            <label for="column2" class="form-label">X_Maximum:</label>
+                        </div>
+                        <div class="col-md-9">
+                            <input type="text" id="input_data2" name="input_data2" placeholder=" Dtype: integer " class="form-control" value="50">
+                        </div>
+                    </div>
+
+                    <div class="row mb-3 align-items-center">
+                        <div class="col-md-3">
+                            <label for="column3" class="form-label">Y_Minimum:</label>
+                        </div>
+                        <div class="col-md-9">
+                            <input type="text" id="input_data3" name="input_data3" placeholder=" Dtype: integer " class="form-control" value="270900">
+                        </div>
+                    </div>
+
+                    <div class="row mb-3 align-items-center">
+                        <div class="col-md-3">
+                            <label for="column4" class="form-label">Y_Maximum:</label>
+                        </div>
+                        <div class="col-md-9">
+                            <input type="text" id="input_data4" name="input_data4" placeholder=" Dtype: integer " class="form-control" value="270944">
+                        </div>
+                    </div>
+
+                    <div class="row mb-3 align-items-center">
+                        <div class="col-md-3">
+                            <label for="column5" class="form-label">Pixels_Areas:</label>
+                        </div>
+                        <div class="col-md-9">
+                            <input type="text" id="input_data5" name="input_data5" placeholder=" Dtype: integer " class="form-control" value="267">
+                        </div>
+                    </div>
+
+                    <div class="row mb-3 align-items-center">
+                        <div class="col-md-3">
+                            <label for="column6" class="form-label">X_Perimeter:</label>
+                        </div>
+                        <div class="col-md-9">
+                            <input type="text" id="input_data6" name="input_data6" placeholder=" Dtype: integer " class="form-control" value="17">
+                        </div>
+                    </div>
+
+                    <div class="row mb-3 align-items-center">
+                        <div class="col-md-3">
+                            <label for="column7" class="form-label">Y_Perimeter:</label>
+                        </div>
+                        <div class="col-md-9">
+                            <input type="text" id="input_data7" name="input_data7" placeholder=" Dtype: integer " class="form-control" value="44">
+                        </div>
+                    </div>
+
+                    <div class="row mb-3 align-items-center">
+                        <div class="col-md-3">
+                            <label for="column8" class="form-label">Sum_of_Luminosity:</label>
+                        </div>
+                        <div class="col-md-9">
+                            <input type="text" id="input_data8" name="input_data8" placeholder=" Dtype: integer " class="form-control" value="24220">
+                        </div>
+                    </div>
+
+                    <div class="row mb-3 align-items-center">
+                        <div class="col-md-3">
+                            <label for="column9" class="form-label">Minimum_of_Luminosity:</label>
+                        </div>
+                        <div class="col-md-9">
+                            <input type="text" id="input_data9" name="input_data9" placeholder=" Dtype: integer " class="form-control" value="76">
+                        </div>
+                    </div>
+
+                    <div class="row mb-3 align-items-center">
+                        <div class="col-md-3">
+                            <label for="column10" class="form-label">Maximum_of_Luminosity:</label>
+                        </div>
+                        <div class="col-md-9">
+                            <input type="text" id="input_data10" name="input_data10" placeholder=" Dtype: integer " class="form-control" value="108">
+                        </div>
+                    </div>
+
+                    <div class="row mb-3 align-items-center">
+                        <div class="col-md-3">
+                            <label for="column11" class="form-label">Length_of_Conveyer:</label>
+                        </div>
+                        <div class="col-md-9">
+                            <input type="text" id="input_data11" name="input_data11" placeholder=" Dtype: integer " class="form-control" value="1687">
+                        </div>
+                    </div>
+
+                    <div class="row mb-3 align-items-center">
+                        <div class="col-md-3">
+                            <label for="column12" class="form-label">TypeOfSteel_A300:</label>
+                        </div>
+                        <div class="col-md-9">
+                            <select class="form-select" id="input_data12" name="input_data12">
+                                <option value=0>0</option>
+                                <option value=1 selected>1</option>
+                            </select>
+                        </div>
+                    </div>
+
+
+                    <div class="row mb-3 align-items-center">
+                        <div class="col-md-3">
+                            <label for="column13" class="form-label">TypeOfSteel_A400:</label>
+                        </div>
+                        <div class="col-md-9">
+                            <select class="form-select" id="input_data13" name="input_data13">
+                                <option value=0 selected>0</option>
+                                <option value=1>1</option>
+                            </select>
+                        </div>
+                    </div>
+
+
+                    <div class="row mb-3 align-items-center">
+                        <div class="col-md-3">
+                            <label for="column14" class="form-label">Steel_Plate_Thickness:</label>
+                        </div>
+                        <div class="col-md-9">
+                            <select class="form-select" id="input_data14" name="input_data14">
+                                <option value=40>40</option>
+                                <option value=50>50</option>
+                                <option value=60>60</option>
+                                <option value=69>69</option>
+                                <option value=70>70</option>
+                                <option value=80 selected>80</option>
+                                <option value=85>85</option>
+                                <option value=90>90</option>
+                                <option value=100>100</option>
+                                <option value=120>120</option>
+                                <option value=125>125</option>
+                                <option value=130>130</option>
+                                <option value=140>140</option>
+                                <option value=143>143</option>
+                                <option value=150>150</option>
+                                <option value=175>175</option>
+                                <option value=180>180</option>
+                                <option value=185>185</option>
+                                <option value=200>200</option>
+                                <option value=211>211</option>
+                                <option value=220>220</option>
+                                <option value=250>250</option>
+                                <option value=290>290</option>
+                                <option value=300>300</option>
+                            </select>
+                        </div>
+                    </div>
+
+
+                    <div class="row mb-3 align-items-center">
+                        <div class="col-md-3">
+                            <label for="column15" class="form-label">Edges_Index:</label>
+                        </div>
+                        <div class="col-md-9">
+                            <input type="text" id="input_data15" name="input_data15" placeholder=" Dtype: float " class="form-control" value="0.0498">
+                        </div>
+                    </div>
+
+                    <div class="row mb-3 align-items-center">
+                        <div class="col-md-3">
+                            <label for="column16" class="form-label">Empty_Index:</label>
+                        </div>
+                        <div class="col-md-9">
+                            <input type="text" id="input_data16" name="input_data16" placeholder=" Dtype: float " class="form-control" value="0.2415">
+                        </div>
+                    </div>
+
+                    <div class="row mb-3 align-items-center">
+                        <div class="col-md-3">
+                            <label for="column17" class="form-label">Square_Index:</label>
+                        </div>
+                        <div class="col-md-9">
+                            <input type="text" id="input_data17" name="input_data17" placeholder=" Dtype: float " class="form-control" value="0.1818">
+                        </div>
+                    </div>
+
+                    <div class="row mb-3 align-items-center">
+                        <div class="col-md-3">
+                            <label for="column18" class="form-label">Outside_X_Index:</label>
+                        </div>
+                        <div class="col-md-9">
+                            <input type="text" id="input_data18" name="input_data18" placeholder=" Dtype: float " class="form-control" value="0.0047">
+                        </div>
+                    </div>
+
+                    <div class="row mb-3 align-items-center">
+                        <div class="col-md-3">
+                            <label for="column19" class="form-label">Edges_X_Index:</label>
+                        </div>
+                        <div class="col-md-9">
+                            <input type="text" id="input_data19" name="input_data19" placeholder=" Dtype: float " class="form-control" value="0.4706">
+                        </div>
+                    </div>
+
+                    <div class="row mb-3 align-items-center">
+                        <div class="col-md-3">
+                            <label for="column20" class="form-label">Edges_Y_Index:</label>
+                        </div>
+                        <div class="col-md-9">
+                            <input type="text" id="input_data20" name="input_data20" placeholder=" Dtype: float " class="form-control" value="1.0000">
+                        </div>
+                    </div>
+
+                    <div class="row mb-3 align-items-center">
+                        <div class="col-md-3">
+                            <label for="column21" class="form-label">Outside_Global_Index:</label>
+                        </div>
+                        <div class="col-md-9">
+                            <select class="form-select" id="input_data21" name="input_data21">
+                                <option value=1.0 selected>1.0</option>
+                                <option value=0.5>0.5</option>
+                                <option value=0.0>0.0</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3 align-items-center">
+                        <div class="col-md-3">
+                            <label for="column22" class="form-label">LogOfAreas:</label>
+                        </div>
+                        <div class="col-md-9">
+                            <input type="text" id="input_data22" name="input_data22" placeholder=" Dtype: float " class="form-control" value="2.4265">
+                        </div>
+                    </div>
+
+                    <div class="row mb-3 align-items-center">
+                        <div class="col-md-3">
+                            <label for="column23" class="form-label">Log_X_Index:</label>
+                        </div>
+                        <div class="col-md-9">
+                            <input type="text" id="input_data23" name="input_data23" placeholder=" Dtype: float " class="form-control" value="0.9031">
+                        </div>
+                    </div>
+
+                    <div class="row mb-3 align-items-center">
+                        <div class="col-md-3">
+                            <label for="column24" class="form-label">Log_Y_Index:</label>
+                        </div>
+                        <div class="col-md-9">
+                            <input type="text" id="input_data24" name="input_data24" placeholder=" Dtype: float " class="form-control" value="1.6435">
+                        </div>
+                    </div>
+
+                    <div class="row mb-3 align-items-center">
+                        <div class="col-md-3">
+                            <label for="column25" class="form-label">Orientation_Index:</label>
+                        </div>
+                        <div class="col-md-9">
+                            <input type="text" id="input_data25" name="input_data25" placeholder=" Dtype: float " class="form-control" value="0.8182">
+                        </div>
+                    </div>
+
+                    <div class="row mb-3 align-items-center">
+                        <div class="col-md-3">
+                            <label for="column26" class="form-label">Luminosity_Index:</label>
+                        </div>
+                        <div class="col-md-9">
+                            <input type="text" id="input_data26" name="input_data26" placeholder=" Dtype: float " class="form-control" value="-0.2913">
+                        </div>
+                    </div>
+
+                    <div class="row mb-3 align-items-center">
+                        <div class="col-md-3">
+                            <label for="column27" class="form-label">SigmoidOfAreas:</label>
+                        </div>
+                        <div class="col-md-9">
+                            <input type="text" id="input_data27" name="input_data27" placeholder=" Dtype: float " class="form-control" value="0.5822">
+                        </div>
+                    </div>
+
+
+                    <div class="mb-3 d-flex justify-content-center">
+                        <button type="submit" class="btn btn-primary">모델 예측 제출</button>
+                    </div>
+                    
+                </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer-->
+    <footer class="py-5 bg-dark">
+        <div class="container">
+            <p class="m-0 text-center text-white">
+                &copy; Your Website 2023 | AI 18기 아자아자팀 프로젝트<br>
+                Team Members: 김보미, 김우영, 이강우, 최재용<br>
+                Project Name: AI Software Upgrade
+            </p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="js/scripts.js"></script>
 </body>
 </html>

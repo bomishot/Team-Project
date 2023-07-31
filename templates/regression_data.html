@@ -11,6 +11,8 @@
     <!-- Core theme CSS (includes Bootstrap)-->
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
+
+
 <body>
     <!-- Responsive navbar with fixed-top class for sticky navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
@@ -21,95 +23,233 @@
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                     <li class="nav-item"><a class="nav-link active" aria-current="page" href="/">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="/about">About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/">Contact</a></li>
                 </ul>
             </div>
         </div>
     </nav>
 
 
-<!-- Content section-->
-<section class="py-5">
-  <div class="container my-5">
-      <div class="row justify-content-center">
-          <div class="col-lg-8">
-              <h2>About Us</h2>
-              <p class="lead">This is a simple About page.</p>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eu dapibus urna, et rhoncus ipsum. Nulla facilisi. Vestibulum scelerisque ac odio non fermentum. Vivamus nec massa id tellus semper elementum. Duis ullamcorper vestibulum sem, eu dapibus elit consequat eu. Sed nec varius ex, vitae vehicula est. Vestibulum nec metus elit. Vestibulum vel justo vel quam volutpat euismod. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Suspendisse a lectus lorem. Etiam ullamcorper ligula eget risus dictum varius. Nunc non hendrerit elit.</p>
-            
+    <!-- Content section-->
+    <section class="py-5">
+        <div class="container my-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                <h2>Regression Data Prediction</h2>
+                <p class="lead">회귀 분석 데이터 예측</p>
+                <p>물리적으로 측정된 특징으로 전복의 나이를 예측입니다.</p>
 
-              <form action="/regression" method="post">
-                <div class="mb-3 d-flex align-items-center">
-                    <label for="column1" class="form-label">Sex:</label>
-                    <select class="form-select" id="column1" name="column1">
-                        <option value="M">M</option>
-                        <option value="F">F</option>
-                    </select>
-                </div>
-            
-                <div class="mb-3 d-flex align-items-center">
-                    <label for="column2" class="form-label">Length:</label>
-                    <div class="flex-grow-1">
-                        <input type="text" id="input_data2" name="input_data2" placeholder="Enter data for Length" class="form-control">
+                <form action="/predict_reg" method="post" onsubmit="showPrediction(); return false;">
+
+                    <div class="row mb-3 align-items-center">
+                        <div class="col-md-2">
+                            <label for="column1" class="form-label">Sex:</label>
+                        </div>
+                        <div class="col-md-10">
+                            <select class="form-select" id="column1" name="column1">
+                                <option value="M" selected>M</option>
+                                <option value="I">I</option>
+                                <option value="F">F</option>
+                            </select>
+                        </div>
                     </div>
-                </div>
-            
-                <div class="mb-3 d-flex align-items-center">
-                    <label for="column3" class="form-label">Diameter:</label>
-                    <div class="flex-grow-1">
-                        <input type="text" id="input_data3" name="input_data3" placeholder="Enter data for Diameter" class="form-control">
+
+                    <div class="row mb-3 align-items-center">
+                        <div class="col-md-2">
+                            <label for="column2" class="form-label">Length:</label>
+                        </div>
+                        <div class="col-md-8">
+                            <input type="range" id="input_data2_slider" name="input_data2" class="form-control" min="0.075" max="0.815" step="0.005">
+                        </div>
+                        <div class="col-md-2">
+                            <input type="number" id="input_data2_number" name="input_data2" class="form-control" min="0.075" max="0.815" step="0.005">
+                        </div>
                     </div>
-                </div>
-            
-                <div class="mb-3 d-flex align-items-center">
-                    <label for="column4" class="form-label">Height:</label>
-                    <div class="flex-grow-1">
-                        <input type="text" id="input_data4" name="input_data4" placeholder="Enter data for Height" class="form-control">
+
+                    <div class="row mb-3 align-items-center">
+                        <div class="col-md-2">
+                            <label for="column3" class="form-label">Diameter:</label>
+                        </div>
+                        <div class="col-md-8">
+                            <input type="range" id="input_data3_slider" name="input_data3" class="form-control" min="0.055" max="0.650" step="0.005">
+                        </div>
+                        <div class="col-md-2">
+                            <input type="number" id="input_data3_number" name="input_data3" class="form-control" min="0.055" max="0.650" step="0.005">
+                        </div>
                     </div>
-                </div>
-            
-                <div class="mb-3 d-flex align-items-center">
-                    <label for="column5" class="form-label">Whole weight:</label>
-                    <div class="flex-grow-1">
-                        <input type="text" id="input_data5" name="input_data5" placeholder="Enter data for Whole weight" class="form-control">
+
+                    <div class="row mb-3 align-items-center">
+                        <div class="col-md-2">
+                            <label for="column4" class="form-label">Height:</label>
+                        </div>
+                        <div class="col-md-8">
+                            <input type="range" id="input_data4_slider" name="input_data4" class="form-control" min="0.000" max="1.130" step="0.005">
+                        </div>
+                        <div class="col-md-2">
+                            <input type="number" id="input_data4_number" name="input_data4" class="form-control" min="0.000" max="1.130" step="0.005">
+                        </div>
                     </div>
-                </div>
-            
-                <div class="mb-3 d-flex align-items-center">
-                    <label for="column6" class="form-label">Shucked weight:</label>
-                    <div class="flex-grow-1">
-                        <input type="text" id="input_data6" name="input_data6" placeholder="Enter data for Shucked weight" class="form-control">
+
+                    <div class="row mb-3 align-items-center">
+                        <label for="column1" class="form-label"><strong>Weight</strong></label>
                     </div>
-                </div>
-            
-                <div class="mb-3 d-flex align-items-center">
-                    <label for="column7" class="form-label">Viscera weight:</label>
-                    <div class="flex-grow-1">
-                        <input type="text" id="input_data7" name="input_data7" placeholder="Enter data for Viscera weight" class="form-control">
+
+                    <div class="row mb-3 align-items-center">
+                        <div class="col-md-2">
+                            <label for="column5" class="form-label">Whole:</label>
+                        </div>
+                        <div class="col-md-8">
+                            <input type="range" id="input_data5_slider" name="input_data5" class="form-control" min="0.0020" max="2.8255" step="0.0005">
+                        </div>
+                        <div class="col-md-2">
+                            <input type="number" id="input_data5_number" name="input_data5" class="form-control" min="0.0020" max="2.8255" step="0.0005">
+                        </div>
                     </div>
-                </div>
-                <div class="mb-3 d-flex align-items-center">
-                    <label for="column8" class="form-label">Shell weight:</label>
-                    <div class="flex-grow-1">
-                        <input type="text" id="input_data8" name="input_data8" placeholder="Enter data for Shell weight" class="form-control">
+
+                    <div class="row mb-3 align-items-center">
+                        <div class="col-md-2">
+                            <label for="column6" class="form-label">Shucked:</label>
+                        </div>
+                        <div class="col-md-8">
+                            <input type="range" id="input_data6_slider" name="input_data6" class="form-control" min="0.0010" max="1.4880" step="0.0005">
+                        </div>
+                        <div class="col-md-2">
+                            <input type="number" id="input_data6_number" name="input_data6" class="form-control" min="0.0010" max="1.4880" step="0.0005">
+                        </div>
                     </div>
-                </div>
-              </form>
-          </div>
-      </div>
-  </div>
-</section>
+
+                    <div class="row mb-3 align-items-center">
+                        <div class="col-md-2">
+                            <label for="column7" class="form-label">Viscera:</label>
+                        </div>
+                        <div class="col-md-8">
+                            <input type="range" id="input_data7_slider" name="input_data7" class="form-control" min="0.0005" max="0.7600" step="0.0005">
+                        </div>
+                        <div class="col-md-2">
+                            <input type="number" id="input_data7_number" name="input_data7" class="form-control" min="0.0005" max="0.7600" step="0.0005">
+                        </div>
+                    </div>
+
+                    <div class="row mb-3 align-items-center">
+                        <div class="col-md-2">
+                            <label for="column8" class="form-label">Shell:</label>
+                        </div>
+                        <div class="col-md-8">
+                            <input type="range" id="input_data8_slider" name="input_data8" class="form-control" min="0.0015" max="1.0050" step="0.0005">
+                        </div>
+                        <div class="col-md-2">
+                            <input type="number" id="input_data8_number" name="input_data8" class="form-control" min="0.0015" max="1.0050" step="0.0005">
+                        </div>
+                    </div>
 
 
+                    <div class="mb-3 d-flex justify-content-center">
+                        <button type="submit" class="btn btn-primary">모델 예측 제출</button>
+                    </div>                    
+                    <div class="row mb-3">
+                        <div class="col-md-2">
+                            <label for="column99" class="form-label">예측값:</label>
+                        </div>
+                        <div class="col-md-10">
+                            <input type="text" placeholder=" N/A " class="form-control" value="{{ predicted_value }}">
+                        </div>
+                        <!-- test 
+                        <div class="col-md-3">
+                            <label for="column100" class="form-label">test:</label>
+                        </div>
+                        <div class="col-md-9">
+                            <input type="text" placeholder=" N/A " class="form-control" value="{{ input_data | join(', ') }}">
+                        </div>
+                        -->
+                    </div>
+
+                </form>
+
+                </div>
+            </div>
+        </div>
+    </section>
 
 
     <!-- Footer-->
     <footer class="py-5 bg-dark">
-        <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2023</p></div>
+        <div class="container">
+            <p class="m-0 text-center text-white">
+                &copy; Your Website 2023 | AI 18기 아자아자팀 프로젝트<br>
+                Team Members: 김보미, 김우영, 이강우, 최재용<br>
+                Project Name: AI Software Upgrade
+            </p>
+        </div>
     </footer>
+
+    <!-- Script-->
+    <script>
+        var initialValues = [
+            { id: 'input_data2', value: 0.350, decimals: 3 },
+            { id: 'input_data3', value: 0.265, decimals: 3 },
+            { id: 'input_data4', value: 0.090, decimals: 3 },
+            { id: 'input_data5', value: 0.2255, decimals: 4 },
+            { id: 'input_data6', value: 0.0995, decimals: 4 },
+            { id: 'input_data7', value: 0.0485, decimals: 4 },
+            { id: 'input_data8', value: 0.0700, decimals: 4 },
+        ];
+
+        function setInitialValues() {
+            initialValues.forEach(item => {
+                document.getElementById(`${item.id}_slider`).value = item.value;
+                document.getElementById(`${item.id}_number`).value = item.value.toFixed(item.decimals);
+            });
+        }
+    
+        setInitialValues();
+    
+        function updateValue(inputField) {
+            var sliderValue = document.getElementById(`${inputField}_slider`).value;
+            var decimals = initialValues.find(item => item.id === inputField).decimals;
+            document.getElementById(`${inputField}_number`).value = parseFloat(sliderValue).toFixed(decimals);
+        }
+    
+        function updateSlider(inputField) {
+            var numberValue = document.getElementById(`${inputField}_number`).value;
+            document.getElementById(`${inputField}_slider`).value = numberValue;
+        }
+    
+        // 마우스 휠로 슬라이더 조절 기능 추가
+        function handleMouseWheel(event, inputField) {
+            var slider = document.getElementById(`${inputField}_slider`);
+            var currentValue = parseFloat(slider.value);
+            var step = parseFloat(slider.step);
+            if (event.deltaY < 0) {
+                // 마우스 휠을 위로 스크롤할 때
+                currentValue = Math.min(parseFloat(slider.max), currentValue + step);
+            } else {
+                // 마우스 휠을 아래로 스크롤할 때
+                currentValue = Math.max(parseFloat(slider.min), currentValue - step);
+            }
+            slider.value = currentValue;
+            updateValue(inputField);
+        }
+    
+        // 슬라이더 요소에 마우스 휠 이벤트 리스너 등록
+        document.querySelectorAll('.form-control[type="range"]').forEach(slider => {
+            var inputField = slider.getAttribute('id').replace('_slider', '');
+            slider.addEventListener('wheel', event => handleMouseWheel(event, inputField));
+            slider.addEventListener('input', event => updateValue(inputField));
+        });
+    
+        // 숫자 입력 필드에 이벤트 리스너 등록
+        document.querySelectorAll('.form-control[type="number"]').forEach(numberInput => {
+            var inputField = numberInput.getAttribute('id').replace('_number', '');
+            numberInput.addEventListener('input', event => updateSlider(inputField));
+        });
+    </script>
+
+
     <!-- Bootstrap core JS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Core theme JS-->
-    <script src="js/scripts.js"></script>
+    
+    <!-- JavaScript -->
+    <!--
+    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+    -->
 </body>
 </html>
