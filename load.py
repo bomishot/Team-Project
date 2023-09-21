@@ -8,7 +8,7 @@ from scipy import stats
 회귀, 이진 분류, 다중 분류 데이터 불러오기 및 전처리
 """
 
-def load_dataset_regression(): 
+def load_dataset_regression():
     """
     회귀 모델 
     """
@@ -28,8 +28,7 @@ def load_dataset_regression():
 
     # "전체 무게 >= 조개껍질 벗긴 무게 + 내장 무게 + 껍질 무게"를 만족하지 않는 행들 제거
     df = df[df['Whole weight'] >= df['Shucked weight'] + df['Viscera weight'] + df['Shell weight']]
-    df = df.reset_index(drop=True)
-    return df
+    return df.reset_index(drop=True)
 
 
 def load_dataset_binary_classification():
